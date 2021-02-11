@@ -1,5 +1,6 @@
 package com.stone.mvvm.adapters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,13 +17,13 @@ class TVShowAdapter :ListAdapter<TVShow,TVShowAdapter.TVShowViewHolder>(
         override fun areItemsTheSame(oldItem: TVShow, newItem: TVShow): Boolean {
             return oldItem==newItem
         }
-
         override fun areContentsTheSame(oldItem: TVShow, newItem: TVShow): Boolean {
             return oldItem==newItem
         }
 
     }
 ){
+
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TVShowViewHolder {
@@ -34,8 +35,12 @@ class TVShowAdapter :ListAdapter<TVShow,TVShowAdapter.TVShowViewHolder>(
     override fun onBindViewHolder(holder: TVShowViewHolder, position: Int) {
         val tvShow=currentList[position]
         holder.bindTVShow(tvShow)
+        Log.i("adapterSize",currentList.size.toString())
     }
 
+    override fun getItemViewType(position: Int): Int {
+        return currentList.size
+    }
     override fun getItemCount(): Int {
         return currentList.size
     }
