@@ -11,15 +11,16 @@ import androidx.recyclerview.widget.RecyclerView
 import com.stone.mvvm.R
 import com.stone.mvvm.adapters.TVShowAdapter
 import com.stone.mvvm.databinding.ActivityMainBinding
+import com.stone.mvvm.listeners.TVShowListener
 import com.stone.mvvm.models.TVShow
 import com.stone.mvvm.viewModels.MostPopularTVShowViewModel
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), TVShowListener {
     private lateinit var binding: ActivityMainBinding
     private var currentPage = 1
     private var totalPages = 1
     private val viewModel by viewModels<MostPopularTVShowViewModel>()
-    private val adapter = TVShowAdapter()
+    private val adapter = TVShowAdapter(this)
     private val tvShows = ArrayList<TVShow>()
 
 
@@ -89,5 +90,9 @@ class MainActivity : AppCompatActivity() {
                 null->binding.isLoadingMore=true
             }
         }
+    }
+
+    override fun onClickTVShow(tvShow: TVShow) {
+        startActivity(TVShowDetailActivity.gotoTVShowActivity(this,tvShow))
     }
 }
