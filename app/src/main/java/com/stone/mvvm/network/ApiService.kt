@@ -16,4 +16,7 @@ interface ApiService {
     @GET("show-details")
     fun getTVShowDetails(@Query("q") tvShowId:String):Call<TVShowDetailsResponse>
 
+    @GET("search")
+    fun searchTVShow(@Query("q") query: String,@Query("page") page:Int):Call<TVShowResponse>
+
 }

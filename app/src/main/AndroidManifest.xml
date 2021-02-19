@@ -12,7 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MVVM"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activities.TVShowDetailActivity"></activity>
+        <activity android:name=".activities.SearchTVShowActivity"></activity>
+        <activity android:name=".activities.WatchlistActivity" />
+        <activity android:name=".activities.TVShowDetailActivity" />
         <activity android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

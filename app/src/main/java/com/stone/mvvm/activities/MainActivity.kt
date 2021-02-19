@@ -43,6 +43,17 @@ class MainActivity : AppCompatActivity(), TVShowListener {
             }
         })
         doInitialize()
+        doOnClick()
+    }
+
+    private fun doOnClick() {
+
+        binding.imageWatchList.setOnClickListener {
+            startActivity(WatchlistActivity.gotoWatchList(this))
+        }
+        binding.imageSearch.setOnClickListener {
+            startActivity(SearchTVShowActivity.gotoSearchTVShowActivity(this))
+        }
     }
 
     private fun doInitialize() {
